@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Providers\Cofigurations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AVMTravel.Tours.API.Application\AVMTravel.Tours.API.Application.csproj" />
+  </ItemGroup>
+
 </Project>

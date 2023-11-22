@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <ProjectReference Include="..\AVMTravel.Tours.API.Bootstrap\AVMTravel.Tours.API.Bootstrap.csproj" />
   </ItemGroup>
 
 </Project>
