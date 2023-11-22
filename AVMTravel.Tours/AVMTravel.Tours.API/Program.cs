@@ -10,8 +10,14 @@ builder.Services.AddPersistenceInfraestructure(builder.Configuration);
 
 builder.Services.AddControllers();
 
+//Services
+builder.Services.ConfigureServices();
+
 //MediaTR
-//builder.Services.ConfigureMediatrServices();
+builder.Services.ConfigureMediatrServices();
+
+//Utils
+builder.Services.AddMapper();
 
 //ApiVersioning
 builder.Services.AddVersioning();
@@ -21,6 +27,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+//app.RunMigrations();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

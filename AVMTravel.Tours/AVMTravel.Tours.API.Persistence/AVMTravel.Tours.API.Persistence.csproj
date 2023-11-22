@@ -21,10 +21,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.3">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.21.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -38,9 +34,7 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="Configurations\" />
     <Folder Include="Percistence\Command\" />
-    <Folder Include="Percistence\Query\" />
   </ItemGroup>
 
 </Project>
