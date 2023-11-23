@@ -23,6 +23,11 @@ namespace AVMTravel.Tours.API.Application.UseCases.Tours.V1.GetById
         {
             var tour = await _tourService.GetByIdAsync(request.Id);
 
+            if (tour == null)
+            {
+                throw new Exception("Entity not found");
+            }
+
             var result = _mapper.Map<GetByIdTourResult>(tour);
 
             return result;

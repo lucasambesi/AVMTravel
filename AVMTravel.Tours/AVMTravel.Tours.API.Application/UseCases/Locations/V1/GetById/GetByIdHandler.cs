@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AVMTravel.Tours.API.Domain.Entities;
 using AVMTravel.Tours.API.Domain.Interfaces.Services;
 using MediatR;
 
@@ -21,6 +22,11 @@ namespace AVMTravel.Tours.API.Application.UseCases.Locations.V1.GetById
             CancellationToken cancellationToken)
         {
             var location = await _locationService.GetByIdAsync(request.Id);
+
+            if (location == null)
+            {
+                throw new Exception("Entity not found");
+            }
 
             var result = _mapper.Map<GetByIdLocationResult>(location);
 
