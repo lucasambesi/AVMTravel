@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AVMTravel.Tours.API.Domain.Entities;
 using AVMTravel.Tours.API.Domain.Interfaces.Services;
 using MediatR;
 
