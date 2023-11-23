@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AVMTravel.Tours.API.Application.UseCases.Locations.V1.Create;
 using AVMTravel.Tours.API.Application.UseCases.Locations.V1.GetById;
 using AVMTravel.Tours.API.Domain.DTOs;
 using AVMTravel.Tours.API.Domain.Entities;
@@ -17,8 +18,12 @@ namespace AVMTravel.Tours.API.Application.Mappings
                 CreateMap<Location, LocationDto>();
             #endregion
 
+            #region Request
+            CreateMap<CreateLocationRequest, LocationDto>();
+            #endregion
+
             #region Results
-                CreateMap<LocationDto, GetByIdLocationResult>();
+            CreateMap<LocationDto, GetByIdLocationResult>();
             #endregion
         }
     }
