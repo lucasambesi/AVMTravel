@@ -10,8 +10,4 @@
     <ProjectReference Include="..\AVMTravel.Tours.API.Persistence\AVMTravel.Tours.API.Persistence.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UseCases\Tours\" />
-  </ItemGroup>
-
 </Project>
