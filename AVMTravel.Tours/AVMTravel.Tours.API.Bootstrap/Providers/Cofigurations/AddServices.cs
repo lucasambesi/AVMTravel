@@ -16,10 +16,15 @@ namespace AVMTravel.Tours.API.Bootstrap.Providers.Cofigurations
         {
             //Services
             services.AddScoped<ILocationService, LocationService>();
+            services.AddScoped<ITourService, TourService>();
 
-            // Querys & Repositories
+            // Querys
             services.AddScoped<ILocationQuery, LocationQuery>();
+            services.AddScoped<ITourQuery, TourQuery>();
+
+            // Repositories
             services.AddScoped<ILocationRepository, LocationRepository>();
+            services.AddScoped<ITourRepository, TourRepository>();
 
             return services;
         }
