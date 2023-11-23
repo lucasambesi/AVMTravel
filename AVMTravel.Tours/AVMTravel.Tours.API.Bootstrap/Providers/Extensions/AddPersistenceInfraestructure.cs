@@ -1,5 +1,4 @@
 ﻿using AVMTravel.Tours.API.Persistence.Contexts;
-using AVMTravel.Tours.API.Persistence.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -15,10 +14,6 @@ namespace AVMTravel.Tours.API.Bootstrap.Providers.Extensions
                 options => options.UseSqlServer(
                         configuration.GetConnectionString("DefaultConnection"), 
                         b => b.MigrationsAssembly(typeof(BaseContext).Assembly.FullName)));
-
-            #region Repositories
-            services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
-            #endregion
         }
 
         public static IApplicationBuilder RunMigrations(this IApplicationBuilder app)
