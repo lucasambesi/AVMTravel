@@ -21,8 +21,11 @@ namespace AVMTravel.Tours.API.Persistence.Contexts
         }
 
         public DbSet<Client> Clients { get; set; }
+
         public DbSet<Tour> Tours { get; set; }
-        //public DbSet<Reservation> Reservations { get; set; }
+
+        public DbSet<Reservation> Reservations { get; set; }
+
         public DbSet<Location> Locations { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
