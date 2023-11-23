@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AVMTravel.Tours.API.Domain.Entities;
 using AVMTravel.Tours.API.Domain.Interfaces.Commands;
 using AVMTravel.Tours.API.Persistence.Contexts;
 
@@ -16,6 +17,15 @@ namespace AVMTravel.Tours.API.Persistence.Percistence.Command
         {
             _dbContext = dbContext;
             _mapper = mapper;
+        }
+
+        public async Task<bool> InsertAsync(Client client)
+        {
+            _dbContext.Clients.Add(client);
+
+            var result = await _dbContext.SaveChangesAsync();
+
+            return result > 0;
         }
     }
 }

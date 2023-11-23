@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using AVMTravel.Tours.API.Domain.DTOs;
 using AVMTravel.Tours.API.Domain.Interfaces.Queries;
 using AVMTravel.Tours.API.Persistence.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace AVMTravel.Tours.API.Persistence.Percistence.Query
 {
@@ -16,6 +18,15 @@ namespace AVMTravel.Tours.API.Persistence.Percistence.Query
         {
             _dbContext = dbContext;
             _mapper = mapper;
+        }
+
+        public async Task<ClientDto?> GetByIdAsync(int id)
+        {
+            var location = await _dbContext.Clients.FirstOrDefaultAsync(l => l.Id == id);
+
+            var result = _mapper.Map<ClientDto>(location);
+
+            return result;
         }
     }
 }

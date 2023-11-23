@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using AVMTravel.Tours.API.Domain.DTOs;
-using AVMTravel.Tours.API.Domain.Entities;
 using AVMTravel.Tours.API.Domain.Interfaces.Queries;
 using AVMTravel.Tours.API.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
