@@ -15,6 +15,7 @@ namespace AVMTravel.Tours.API.Bootstrap.Providers.Cofigurations
                 mc.AddProfile(new LocationMappings());
                 mc.AddProfile(new TourMappings());
                 mc.AddProfile(new ClientMappings());
+                mc.AddProfile(new ReservationMappings()); 
             });
 
             IMapper mapper = mappingConfig.CreateMapper();
