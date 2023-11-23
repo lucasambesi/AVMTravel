@@ -1,4 +1,6 @@
 ﻿using AVMTravel.Tours.API.Domain.Entities;
+using AVMTravel.Tours.API.Domain.Entities.Common;
+using AVMTravel.Tours.API.Domain.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -23,7 +25,7 @@ namespace AVMTravel.Tours.API.Persistence.Contexts
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Location> Locations { get; set; }
 
-        /*public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             foreach (var entry in ChangeTracker.Entries<AuditableBaseEntity>())
             {
@@ -40,8 +42,6 @@ namespace AVMTravel.Tours.API.Persistence.Contexts
                 }
             }
             return base.SaveChangesAsync(cancellationToken);
-        }*/
-
-
+        }
     }
 }
