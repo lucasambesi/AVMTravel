@@ -7,6 +7,7 @@ namespace AVMTravel.Tours.API.Controllers.Client.V1
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/clients")]
+    [Authorize(AuthenticationSchemes = "AuthToken")]
     public partial class ClientController : ControllerBase
     {
         private readonly IMediator _mediator;

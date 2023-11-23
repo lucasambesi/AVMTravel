@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AVMTravel.Tours.API.Controllers.Location.V1
@@ -7,6 +8,7 @@ namespace AVMTravel.Tours.API.Controllers.Location.V1
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/locations")]
+    [Authorize(AuthenticationSchemes = "AuthToken")]
     public partial class LocationController : ControllerBase
     {
         private readonly IMediator _mediator;

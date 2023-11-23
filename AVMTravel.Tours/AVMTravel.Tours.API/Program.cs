@@ -1,5 +1,6 @@
 using AVMTravel.Tours.API.Bootstrap.Providers.Cofigurations;
 using AVMTravel.Tours.API.Bootstrap.Providers.Extensions;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,9 +23,18 @@ builder.Services.AddMapper();
 //ApiVersioning
 builder.Services.AddVersioning();
 
+//Authentication
+builder.Services.AddApiAuthentication(builder.Configuration);
+
 //Swagger Gen /OpenAPI
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGenConfig();
+
+builder.Services.Configure<SwaggerGenOptions>(options =>
+{
+    options.CustomSchemaIds(x => x.FullName);
+    options.UseAllOfToExtendReferenceSchemas();
+});
 
 var app = builder.Build();
 
@@ -39,7 +49,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+app.UseApiAuthorization();
 
 app.MapControllers();
 
