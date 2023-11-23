@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AVMTravel.Tours.API.Application.UseCases.Client.V1.GetById;
+using AVMTravel.Tours.API.Application.UseCases.Client.V1.Login;
 using AVMTravel.Tours.API.Application.UseCases.Client.V1.Register;
 using AVMTravel.Tours.API.Application.UseCases.Locations.V1.Create;
 using AVMTravel.Tours.API.Application.UseCases.Locations.V1.GetById;
@@ -22,6 +23,7 @@ namespace AVMTravel.Tours.API.Application.Mappings
 
             #region Request
             CreateMap<RegisterRequest, ClientDto>();
+            CreateMap<LoginRequest, ClientDto>();
             #endregion
 
             #region Results

@@ -5,6 +5,11 @@ using AVMTravel.Tours.API.Domain.Helpers.Encrypt;
 using AVMTravel.Tours.API.Domain.Interfaces.Commands;
 using AVMTravel.Tours.API.Domain.Interfaces.Queries;
 using AVMTravel.Tours.API.Domain.Interfaces.Services;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace AVMTravel.Tours.API.Application.Services
 {
@@ -13,15 +18,18 @@ namespace AVMTravel.Tours.API.Application.Services
         private readonly IClientQuery _clientQuery;
         private readonly IClientRepository _clientRepository;
         private readonly IMapper _mapper;
+        private readonly IConfiguration _config;
 
         public ClientService(
             IClientQuery clientQuery,
             IClientRepository clientRepository,
-            IMapper mapper)
+            IMapper mapper,
+            IConfiguration config)
         {
             _clientQuery = clientQuery;
             _clientRepository = clientRepository;
             _mapper = mapper;
+            _config = config;
         }
 
 
@@ -36,6 +44,15 @@ namespace AVMTravel.Tours.API.Application.Services
             clientDto.Password = EncryptPassword(clientDto.Password);
 
             return await InsertAsync(clientDto);
+        }
+
+        public async Task<ClientDto?> GetUserByCredentialsAsync(ClientDto clientDto)
+        {
+            clientDto.Password = EncryptPassword(clientDto.Password);
+
+            var client = _mapper.Map<Client>(clientDto);
+
+            return await _clientQuery.GetUserByCredentialsAsync(client);
         }
 
         public async Task<bool> InsertAsync(ClientDto clientDto)
@@ -53,6 +70,28 @@ namespace AVMTravel.Tours.API.Application.Services
         private string EncryptPassword(string password)
         {
             return Encrypt.GetSHA256(password);
+        }
+
+        public string GenerateToken(ClientDto clientDto)
+        {
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var claims = new[]
+            {
+                new Claim(ClaimTypes.Name, clientDto.Email),
+                new Claim(ClaimTypes.NameIdentifier, clientDto.Id.ToString()),
+            };
+
+            var token = new JwtSecurityToken(
+                _config["Jwt:Issuer"],
+                _config["Jwt:Audience"],
+                claims,
+                notBefore: DateTime.UtcNow,
+                expires: DateTime.UtcNow.AddHours(12),
+                signingCredentials: credentials);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }

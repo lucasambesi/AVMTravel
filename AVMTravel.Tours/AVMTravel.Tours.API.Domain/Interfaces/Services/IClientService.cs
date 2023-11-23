@@ -6,6 +6,10 @@ namespace AVMTravel.Tours.API.Domain.Interfaces.Services
     {
         Task<bool> RegisterAsync(ClientDto clientDto);
 
+        Task<ClientDto?> GetUserByCredentialsAsync(ClientDto clientDto);
+
+        string GenerateToken(ClientDto clientDto);
+
         Task<bool> InsertAsync(ClientDto clientDto);
 
         Task<ClientDto?> GetByIdAsync(int id);

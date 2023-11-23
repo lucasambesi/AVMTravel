@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AVMTravel.Tours.API.Domain.DTOs;
+using AVMTravel.Tours.API.Domain.Entities;
 using AVMTravel.Tours.API.Domain.Interfaces.Queries;
 using AVMTravel.Tours.API.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,17 @@ namespace AVMTravel.Tours.API.Persistence.Percistence.Query
             var location = await _dbContext.Clients.FirstOrDefaultAsync(l => l.Id == id);
 
             var result = _mapper.Map<ClientDto>(location);
+
+            return result;
+        }
+
+        public async Task<ClientDto?> GetUserByCredentialsAsync(Client client)
+        {
+            var query = await _dbContext.Clients.FirstOrDefaultAsync(
+                l => l.Email == client.Email &&
+                l.Password == client.Password);
+
+            var result = _mapper.Map<ClientDto>(query);
 
             return result;
         }
