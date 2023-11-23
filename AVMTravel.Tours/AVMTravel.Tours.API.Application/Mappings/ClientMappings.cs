@@ -2,8 +2,6 @@
 using AVMTravel.Tours.API.Application.UseCases.Client.V1.GetById;
 using AVMTravel.Tours.API.Application.UseCases.Client.V1.Login;
 using AVMTravel.Tours.API.Application.UseCases.Client.V1.Register;
-using AVMTravel.Tours.API.Application.UseCases.Locations.V1.Create;
-using AVMTravel.Tours.API.Application.UseCases.Locations.V1.GetById;
 using AVMTravel.Tours.API.Domain.DTOs;
 using AVMTravel.Tours.API.Domain.Entities;
 
@@ -18,7 +16,8 @@ namespace AVMTravel.Tours.API.Application.Mappings
             #endregion
 
             #region Dtos
-            CreateMap<Client, ClientDto>();
+            CreateMap<Client, ClientDto>()
+                .ForMember(x => x.Password, y => y.Ignore());
             #endregion
 
             #region Request

@@ -22,9 +22,13 @@ namespace AVMTravel.Tours.API.Persistence.Percistence.Query
 
         public async Task<ReservationDto?> GetByIdAsync(int id)
         {
-            var location = await _dbContext.Locations.FirstOrDefaultAsync(l => l.Id == id);
+            var reservation = await _dbContext.Reservations
+                .Include(r => r.Client)
+                .Include(r => r.Tour)
+                .Where(l => l.Id == id)
+                .FirstOrDefaultAsync();
 
-            var result = _mapper.Map<ReservationDto>(location);
+            var result = _mapper.Map<ReservationDto>(reservation);
 
             return result;
         }
