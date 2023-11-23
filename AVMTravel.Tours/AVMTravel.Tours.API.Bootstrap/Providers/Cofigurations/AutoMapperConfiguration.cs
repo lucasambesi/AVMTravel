@@ -1,5 +1,4 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
 using AVMTravel.Tours.API.Application.Mappings;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics.CodeAnalysis;
@@ -14,6 +13,7 @@ namespace AVMTravel.Tours.API.Bootstrap.Providers.Cofigurations
             MapperConfiguration mappingConfig = new(mc =>
             {
                 mc.AddProfile(new LocationMappings());
+                mc.AddProfile(new TourMappings());
             });
 
             IMapper mapper = mappingConfig.CreateMapper();
