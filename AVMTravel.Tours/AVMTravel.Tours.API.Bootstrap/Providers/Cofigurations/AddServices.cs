@@ -18,16 +18,19 @@ namespace AVMTravel.Tours.API.Bootstrap.Providers.Cofigurations
             services.AddScoped<ILocationService, LocationService>();
             services.AddScoped<ITourService, TourService>();
             services.AddScoped<IClientService, ClientService>();
+            services.AddScoped<IReservationService, ReservationService>();
 
             // Querys
             services.AddScoped<ILocationQuery, LocationQuery>();
             services.AddScoped<ITourQuery, TourQuery>();
             services.AddScoped<IClientQuery, ClientQuery>();
+            services.AddScoped<IReservationQuery, ReservationQuery>();
 
             // Repositories
             services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddScoped<ITourRepository, TourRepository>();
             services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<IReservationRepository, ReservationRepository>();
 
             return services;
         }
