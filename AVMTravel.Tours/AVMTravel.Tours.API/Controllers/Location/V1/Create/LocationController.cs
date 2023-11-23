@@ -14,7 +14,7 @@ namespace AVMTravel.Tours.API.Controllers.Location.V1
         /// </remarks>
         /// <param name="location">location</param>
         /// <returns></returns>
-        /// <response code="200">Created</response>
+        /// <response code="200">Updated</response>
         /// <response code="404">Not Found</response>
         [HttpPost]
         [ProducesResponseType(typeof(CreateLocationResult), (int)HttpStatusCode.Created)]

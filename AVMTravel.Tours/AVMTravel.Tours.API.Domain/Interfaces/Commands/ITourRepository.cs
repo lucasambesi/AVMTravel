@@ -5,5 +5,7 @@ namespace AVMTravel.Tours.API.Domain.Interfaces.Commands
     public interface ITourRepository
     {
         Task<bool> InsertAsync(Tour tour);
+
+        Task<bool> UpdateAsync(Tour tour);
     }
 }

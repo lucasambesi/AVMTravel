@@ -30,6 +30,22 @@ namespace AVMTravel.Tours.API.Application.Services
             return await _tourRepository.InsertAsync(tour);
         }
 
+        public async Task<bool> UpdateAsync(TourDto existingTour, TourDto newTour)
+        {           
+            existingTour.Name = newTour.Name;
+            existingTour.Description = newTour.Description;
+            existingTour.StartDate = newTour.StartDate;
+            existingTour.DurationHours = newTour.DurationHours;
+            existingTour.Price = newTour.Price;
+            existingTour.LocationId = newTour.LocationId;
+            existingTour.TourGuide = newTour.TourGuide;
+            existingTour.DifficultyLevel = newTour.DifficultyLevel;
+
+            var tour = _mapper.Map<Tour>(existingTour);
+
+            return await _tourRepository.UpdateAsync(tour);
+        }
+
         public async Task<TourDto?> GetByIdAsync(int id)
         {
             return await _tourQuery.GetByIdAsync(id);

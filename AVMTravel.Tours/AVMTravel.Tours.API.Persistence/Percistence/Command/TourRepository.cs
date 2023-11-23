@@ -27,5 +27,14 @@ namespace AVMTravel.Tours.API.Persistence.Percistence.Command
 
             return result > 0;
         }
+
+        public async Task<bool> UpdateAsync(Tour tour)
+        {
+            _dbContext.Tours.Update(tour);
+
+            var result = await _dbContext.SaveChangesAsync();
+
+            return result > 0;
+        }
     }
 }
