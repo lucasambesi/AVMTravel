@@ -2,7 +2,6 @@
 using AVMTravel.Tours.API.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 using System.Diagnostics.CodeAnalysis;
 
 namespace AVMTravel.Tours.API.Persistence.Configurations
@@ -34,10 +33,6 @@ namespace AVMTravel.Tours.API.Persistence.Configurations
             builder.Property(e => e.DurationHours)
                 .IsRequired();
 
-            //builder.Property(e => e.Location)
-            //    .IsRequired(false)
-            //    .IsUnicode(false);
-
             builder.Property(e => e.TourGuide)
                 .IsRequired(false)
                 .HasMaxLength(100)
@@ -49,6 +44,10 @@ namespace AVMTravel.Tours.API.Persistence.Configurations
             builder.Property(e => e.DifficultyLevel)
                 .IsRequired();
 
+            builder.Property(e => e.Active)
+                .IsRequired()
+                .HasDefaultValue(true);
+
             builder.Property(e => e.CreatedAt)
                 .IsRequired();
 
@@ -56,9 +55,6 @@ namespace AVMTravel.Tours.API.Persistence.Configurations
                 .IsRequired();
 
             builder.HasOne(d => d.Location);
-                //.WithMany(p => p.Tours)
-                //.HasForeignKey(d => d.LocationId)
-                //.OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

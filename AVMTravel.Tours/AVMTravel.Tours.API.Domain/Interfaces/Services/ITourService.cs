@@ -5,6 +5,8 @@ namespace AVMTravel.Tours.API.Domain.Interfaces.Services
     {
         Task<bool> InsertAsync(TourDto tourDto);
 
+        Task<bool> DeleteAsync(int id);
+
         Task<bool> UpdateAsync(TourDto existingTour, TourDto newTour);
 
         Task<TourDto?> GetByIdAsync(int id);

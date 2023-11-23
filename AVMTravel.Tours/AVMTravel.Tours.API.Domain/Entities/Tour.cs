@@ -24,5 +24,7 @@ namespace AVMTravel.Tours.API.Domain.Entities
         public string? TourGuide { get; set; }
 
         public EDifficultyLevelType DifficultyLevel { get; set; }
+
+        public bool Active { get; set; }
     }
 }

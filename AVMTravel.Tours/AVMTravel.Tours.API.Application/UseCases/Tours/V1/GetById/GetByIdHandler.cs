@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using AVMTravel.Tours.API.Application.Services;
-using AVMTravel.Tours.API.Application.UseCases.Locations.V1.GetById;
 using AVMTravel.Tours.API.Domain.Interfaces.Services;
 using MediatR;
 

@@ -22,5 +22,7 @@ namespace AVMTravel.Tours.API.Application.UseCases.Tours.V1.GetById
         public string? TourGuide { get; set; }
 
         public EDifficultyLevelType DifficultyLevel { get; set; }
+
+        public bool Active { get; set; }
     }
 }

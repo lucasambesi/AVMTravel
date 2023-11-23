@@ -1,30 +1,32 @@
-﻿using AVMTravel.Tours.API.Application.UseCases.Locations.V1.Create;
+﻿using AVMTravel.Tours.API.Application.UseCases.Tours.V1.Delete;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace AVMTravel.Tours.API.Controllers.Location.V1
+namespace AVMTravel.Tours.API.Controllers.Tour.V1
 {
-    public partial class LocationController
+    public partial class TourController
     {
         /// <summary>
-        /// Create Location
+        /// Delete Tour
         /// </summary>
         /// <remarks>
-        /// Location
+        /// Tour
         /// </remarks>
-        /// <param name="location">location</param>
+        /// <param name="id"> Id </param>
         /// <returns></returns>
         /// <response code="200">Deleted</response>
         /// <response code="404">Not Found</response>
-        [HttpPost]
-        [ProducesResponseType(typeof(CreateLocationResult), (int)HttpStatusCode.Created)]
-        public async Task<IActionResult> CreateLocationAsync(
-            [FromBody] CreateLocationRequest location,
+        [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(DeleteTourResult), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> DeleteTourAsync(
+            [FromRoute] int id,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             try
             {
-                var result = await _mediator.Send(location);
+                var request = new DeleteTourRequest(id);
+
+                var result = await _mediator.Send(request);
 
                 return Ok(result);
             }

@@ -14,7 +14,7 @@ namespace AVMTravel.Tours.API.Controllers.Tour.V1
         /// </remarks>
         /// <param name="tour">tour</param>
         /// <returns></returns>
-        /// <response code="200">Updated</response>
+        /// <response code="200">Deleted</response>
         /// <response code="404">Not Found</response>
         [HttpPut]
         [ProducesResponseType(typeof(UpdateTourResult), (int)HttpStatusCode.OK)]
