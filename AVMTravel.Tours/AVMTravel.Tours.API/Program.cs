@@ -1,5 +1,7 @@
+using AVMTravel.Tours.API.ApiClients.Extensions;
 using AVMTravel.Tours.API.Bootstrap.Providers.Cofigurations;
 using AVMTravel.Tours.API.Bootstrap.Providers.Extensions;
+using Microsoft.Extensions.Configuration;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +27,9 @@ builder.Services.AddVersioning();
 
 //Authentication
 builder.Services.AddApiAuthentication(builder.Configuration);
+
+//Clients
+builder.Services.AddAccommodationServiceClient(builder.Configuration);
 
 //Swagger Gen /OpenAPI
 builder.Services.AddEndpointsApiExplorer();

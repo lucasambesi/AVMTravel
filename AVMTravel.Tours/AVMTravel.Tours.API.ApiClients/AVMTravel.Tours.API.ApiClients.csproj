@@ -7,8 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AVMTravel.Tours.API.ApiClients\AVMTravel.Tours.API.ApiClients.csproj" />
-    <ProjectReference Include="..\AVMTravel.Tours.API.Persistence\AVMTravel.Tours.API.Persistence.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Refit" Version="7.0.0" />
+    <PackageReference Include="Refit.HttpClientFactory" Version="7.0.0" />
   </ItemGroup>
 
 </Project>
