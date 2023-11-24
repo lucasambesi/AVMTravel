@@ -20,14 +20,16 @@ namespace AVMTravel.Tours.API.Controllers.Client.V1
         }
 
         /// <summary>
-        /// LoginHandler Client
+        /// Login Client
         /// </summary>
         /// <remarks>
-        /// Client
+        /// Client module
         /// </remarks>
-        /// <param name="client">client</param>
+        /// <param name="client">
+        /// Email and password
+        /// </param>
         /// <returns></returns>
-        /// <response code="200">Created</response>
+        /// <response code="200">Login</response>
         /// <response code="404">Not Found</response>
         [HttpPost]
         [ProducesResponseType(typeof(LoginResult), (int)HttpStatusCode.Created)]

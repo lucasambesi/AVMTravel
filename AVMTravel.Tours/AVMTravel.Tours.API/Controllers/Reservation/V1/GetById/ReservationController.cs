@@ -10,7 +10,7 @@ namespace AVMTravel.Tours.API.Controllers.Reservation.V1
         /// Get Reservation by Id
         /// </summary>
         /// <remarks>
-        /// Reservation
+        /// Reservation module
         /// </remarks>
         /// <param name="id"> Id </param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>

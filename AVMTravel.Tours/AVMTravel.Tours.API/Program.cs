@@ -2,7 +2,9 @@ using AVMTravel.Tours.API.ApiClients.Extensions;
 using AVMTravel.Tours.API.Bootstrap.Providers.Cofigurations;
 using AVMTravel.Tours.API.Bootstrap.Providers.Extensions;
 using Microsoft.Extensions.Configuration;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,11 +36,13 @@ builder.Services.AddAccommodationServiceClient(builder.Configuration);
 //Swagger Gen /OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGenConfig();
-
-builder.Services.Configure<SwaggerGenOptions>(options =>
+builder.Services.AddSwaggerGen(c =>
 {
-    options.CustomSchemaIds(x => x.FullName);
-    options.UseAllOfToExtendReferenceSchemas();
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "API AVMTravel Tours", Version = "v1" });
+    // Set the comments path for the Swagger JSON and UI.
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    c.IncludeXmlComments(xmlPath);
 });
 
 var app = builder.Build();
@@ -51,6 +55,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "API AVMTravel Tours V1");
+});
 
 app.UseHttpsRedirection();
 

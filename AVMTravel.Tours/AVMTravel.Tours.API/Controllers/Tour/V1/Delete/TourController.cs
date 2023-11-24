@@ -10,9 +10,9 @@ namespace AVMTravel.Tours.API.Controllers.Tour.V1
         /// Delete Tour
         /// </summary>
         /// <remarks>
-        /// Tour
+        /// Tour module
         /// </remarks>
-        /// <param name="id"> Id </param>
+        /// <param name="id"> Tour Id </param>
         /// <returns></returns>
         /// <response code="200">Deleted</response>
         /// <response code="404">Not Found</response>

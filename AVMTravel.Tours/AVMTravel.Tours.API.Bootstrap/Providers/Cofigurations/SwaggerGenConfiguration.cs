@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 
 namespace AVMTravel.Tours.API.Bootstrap.Providers.Cofigurations
 {
@@ -11,8 +12,6 @@ namespace AVMTravel.Tours.API.Bootstrap.Providers.Cofigurations
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API AVMTravel Tours", Version = "v1" });
-
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Description = "Jwt Authorization",

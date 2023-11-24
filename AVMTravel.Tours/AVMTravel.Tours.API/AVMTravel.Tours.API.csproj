@@ -21,5 +21,9 @@
   <ItemGroup>
     <ProjectReference Include="..\AVMTravel.Tours.API.Bootstrap\AVMTravel.Tours.API.Bootstrap.csproj" />
   </ItemGroup>
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
 
 </Project>

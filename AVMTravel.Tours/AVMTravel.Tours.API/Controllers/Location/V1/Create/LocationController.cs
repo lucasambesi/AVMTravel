@@ -10,11 +10,13 @@ namespace AVMTravel.Tours.API.Controllers.Location.V1
         /// Create Location
         /// </summary>
         /// <remarks>
-        /// Location
+        /// Location module
         /// </remarks>
-        /// <param name="location">location</param>
+        /// <param name="location">
+        /// location object
+        /// </param>
         /// <returns></returns>
-        /// <response code="200">Deleted</response>
+        /// <response code="200">Created</response>
         /// <response code="404">Not Found</response>
         [HttpPost]
         [ProducesResponseType(typeof(CreateLocationResult), (int)HttpStatusCode.Created)]

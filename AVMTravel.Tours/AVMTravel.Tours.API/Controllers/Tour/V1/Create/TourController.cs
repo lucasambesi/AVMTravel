@@ -10,11 +10,11 @@ namespace AVMTravel.Tours.API.Controllers.Tour.V1
         /// Create Tour
         /// </summary>
         /// <remarks>
-        /// Tour
+        /// Tour module
         /// </remarks>
-        /// <param name="tour">tour</param>
+        /// <param name="tour">tour object</param>
         /// <returns></returns>
-        /// <response code="200">Deleted</response>
+        /// <response code="200">Created</response>
         /// <response code="404">Not Found</response>
         [HttpPost]
         [ProducesResponseType(typeof(CreateTourResult), (int)HttpStatusCode.Created)]

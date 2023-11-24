@@ -22,11 +22,13 @@ namespace AVMTravel.Tours.API.Controllers.Client.V1
         /// Register Client
         /// </summary>
         /// <remarks>
-        /// Client
+        /// Client module
         /// </remarks>
-        /// <param name="client">client</param>
+        /// <param name="client">
+        /// email, password and full name
+        /// </param>
         /// <returns></returns>
-        /// <response code="200">Created</response>
+        /// <response code="200">Register</response>
         /// <response code="404">Not Found</response>
         [HttpPost]
         [ProducesResponseType(typeof(RegisterResult), (int)HttpStatusCode.Created)]

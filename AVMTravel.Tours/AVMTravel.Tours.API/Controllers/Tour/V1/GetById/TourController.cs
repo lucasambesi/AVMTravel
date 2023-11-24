@@ -10,9 +10,11 @@ namespace AVMTravel.Tours.API.Controllers.Tour.V1
         /// Get Tour by Id
         /// </summary>
         /// <remarks>
-        /// Tour
+        /// Tour module
         /// </remarks>
-        /// <param name="id"> Id </param>
+        /// <param name="id">
+        /// Tour Id 
+        /// </param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns></returns>
         /// <response code="200">Ok</response>

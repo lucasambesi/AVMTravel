@@ -10,9 +10,9 @@ namespace AVMTravel.Tours.API.Controllers.Location.V1
         /// Get Location by Id
         /// </summary>
         /// <remarks>
-        /// Location
+        /// Location module
         /// </remarks>
-        /// <param name="id"> Id </param>
+        /// <param name="id"> Location Id </param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns></returns>
         /// <response code="200">Ok</response>

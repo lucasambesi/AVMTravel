@@ -10,11 +10,11 @@ namespace AVMTravel.Tours.API.Controllers.Reservation.V1
         /// Create Reservation
         /// </summary>
         /// <remarks>
-        /// Reservation
+        /// clientId and tourId
         /// </remarks>
-        /// <param name="reservation">reservation</param>
+        /// <param name="reservation">reservation object</param>
         /// <returns></returns>
-        /// <response code="200">Deleted</response>
+        /// <response code="200">Created</response>
         /// <response code="404">Not Found</response>
         [HttpPost]
         [ProducesResponseType(typeof(CreateReservationResult), (int)HttpStatusCode.Created)]
