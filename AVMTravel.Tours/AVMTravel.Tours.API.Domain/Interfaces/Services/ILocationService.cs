@@ -5,7 +5,7 @@ namespace AVMTravel.Tours.API.Domain.Interfaces.Services
 {
     public interface ILocationService
     {
-        Task<bool> InsertAsync(LocationDto locationDto);
+        Task<int> InsertAsync(LocationDto locationDto);
 
         Task<List<LocationDto>> GetAllAsync();
 

@@ -19,13 +19,13 @@ namespace AVMTravel.Tours.API.Persistence.Percistence.Command
             _mapper = mapper;
         }
 
-        public async Task<bool> InsertAsync(Location location)
+        public async Task<int> InsertAsync(Location location)
         {
             _dbContext.Locations.Add(location);
 
             var result = await _dbContext.SaveChangesAsync();
 
-            return result > 0;
+            return result > 0 ? location.Id : 0;
         }
     }
 }

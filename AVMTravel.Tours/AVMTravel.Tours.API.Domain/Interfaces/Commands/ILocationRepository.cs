@@ -4,6 +4,6 @@ namespace AVMTravel.Tours.API.Domain.Interfaces.Commands
 {
     public interface ILocationRepository
     {
-        Task<bool> InsertAsync(Location location);
+        Task<int> InsertAsync(Location location);
     }
 }

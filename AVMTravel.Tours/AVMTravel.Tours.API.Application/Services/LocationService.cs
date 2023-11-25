@@ -24,7 +24,7 @@ namespace AVMTravel.Tours.API.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<bool> InsertAsync(LocationDto locationDto)
+        public async Task<int> InsertAsync(LocationDto locationDto)
         {
             var location = _mapper.Map<Location>(locationDto);
 
