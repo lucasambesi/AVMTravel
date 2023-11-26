@@ -1,4 +1,6 @@
 ﻿using AVMTravel.Tours.API.Application.UseCases.Client.V1.Login;
+using AVMTravel.Tours.API.Domain.Helpers;
+using Azure.Core;
 using FluentValidation;
 
 namespace AVMTravel.Tours.API.Application.Validators.Client
@@ -13,12 +15,12 @@ namespace AVMTravel.Tours.API.Application.Validators.Client
         private void MandatoryValidations()
         {
             RuleFor(request => request.Email)
-                .NotEmpty()
-                .WithMessage("The email cannot be empty");
+            .NotEmpty()
+            .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(LoginRequest.Email)));
 
             RuleFor(request => request.Password)
                 .NotEmpty()
-                .WithMessage("The password cannot be empty");
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(LoginRequest.Password)));
         }
     }
 }

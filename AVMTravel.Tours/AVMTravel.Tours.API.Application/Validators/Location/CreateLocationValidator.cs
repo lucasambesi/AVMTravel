@@ -1,4 +1,5 @@
 ﻿using AVMTravel.Tours.API.Application.UseCases.Locations.V1.Create;
+using AVMTravel.Tours.API.Domain.Helpers;
 using FluentValidation;
 
 namespace AVMTravel.Tours.API.Application.Validators.Location
@@ -14,7 +15,7 @@ namespace AVMTravel.Tours.API.Application.Validators.Location
         {
             RuleFor(request => request.Name)
                 .NotEmpty()
-                .WithMessage("The name cannot be empty");
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(CreateLocationRequest.Name)));
         }
     }
 }

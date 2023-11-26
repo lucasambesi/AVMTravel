@@ -1,4 +1,6 @@
 ﻿using AVMTravel.Tours.API.Application.UseCases.Tours.V1.Create;
+using AVMTravel.Tours.API.Domain.Helpers;
+using Azure.Core;
 using FluentValidation;
 
 
@@ -15,27 +17,27 @@ namespace AVMTravel.Tours.API.Application.Validators.Tour
         {
             RuleFor(request => request.Name)
                 .NotEmpty()
-                .WithMessage("The Name cannot be empty");
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(CreateTourRequest.Name)));
 
             RuleFor(request => request.LocationId)
                 .NotEmpty()
-                .WithMessage("The Location id cannot be empty");
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(CreateTourRequest.LocationId)));
 
             RuleFor(request => request.DurationHours)
                 .NotEmpty()
-                .WithMessage("The DurationHours cannot be empty");
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(CreateTourRequest.DurationHours)));
 
             RuleFor(request => request.DifficultyLevel)
                 .NotEmpty()
-                .WithMessage("The DifficultyLevel cannot be empty");
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(CreateTourRequest.DifficultyLevel)));
 
             RuleFor(request => request.StartDate)
                 .NotEmpty()
-                .WithMessage("The StartDate cannot be empty");
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(CreateTourRequest.StartDate)));
 
             RuleFor(request => request.Price)
                 .NotEmpty()
-                .WithMessage("The Price cannot be empty");
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(CreateTourRequest.Price)));
         }
     }
 }

@@ -16,11 +16,11 @@ namespace AVMTravel.Tours.API.Application.Validators.Reservation
         {
             RuleFor(request => request.ClientId)
                 .NotEmpty()
-                .WithMessage("The cliend id cannot be empty");
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(CreateReservationRequest.ClientId)));
 
             RuleFor(request => request.TourId)
                 .NotEmpty()
-                .WithMessage("The tour id cannot be empty");
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(CreateReservationRequest.TourId)));
         }
     }
 }

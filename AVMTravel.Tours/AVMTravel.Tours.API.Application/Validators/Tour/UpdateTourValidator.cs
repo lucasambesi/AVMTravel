@@ -15,39 +15,39 @@ namespace AVMTravel.Tours.API.Application.Validators.Tour
         {
             RuleFor(request => request.Id)
                 .NotEmpty()
-                .WithMessage("The id cannot be empty");
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(UpdateTourRequest.Id)));
 
             RuleFor(request => request.Name)
                 .NotEmpty()
-                .WithMessage("The Name cannot be empty");
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(UpdateTourRequest.Name)));
 
             RuleFor(request => request.Description)
                 .NotEmpty()
-                .WithMessage("The Description cannot be empty");
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(UpdateTourRequest.Description)));
 
             RuleFor(request => request.StartDate)
                 .NotEmpty()
-                .WithMessage("The StartDate cannot be empty");
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(UpdateTourRequest.StartDate)));
 
             RuleFor(request => request.DurationHours)
-            .NotEmpty()
-            .WithMessage("The DurationHours cannot be empty");
+                .NotEmpty()
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(UpdateTourRequest.DurationHours)));
 
             RuleFor(request => request.Price)
-            .NotEmpty()
-            .WithMessage("The Price cannot be empty");
+                .NotEmpty()
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(UpdateTourRequest.Price)));
 
             RuleFor(request => request.LocationId)
-            .NotEmpty()
-            .WithMessage("The LocationId cannot be empty");
+                .NotEmpty()
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(UpdateTourRequest.LocationId)));
 
             RuleFor(request => request.TourGuide)
-            .NotEmpty()
-            .WithMessage("The TourGuide cannot be empty");
+                .NotEmpty()
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(UpdateTourRequest.TourGuide)));
 
             RuleFor(request => request.DifficultyLevel)
-            .NotEmpty()
-            .WithMessage("The DifficultyLevel cannot be empty");
+                .NotEmpty()
+                .WithMessage(CommonHelper.CannotBeEmptyMessage(nameof(UpdateTourRequest.DifficultyLevel)));
         }
     }
 }
