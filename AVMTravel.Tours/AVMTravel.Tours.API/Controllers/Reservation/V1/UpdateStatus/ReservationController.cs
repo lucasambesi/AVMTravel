@@ -33,6 +33,14 @@ namespace AVMTravel.Tours.API.Controllers.Reservation.V1
 
                 return Ok(result);
             }
+            catch (ValidationApiException ex)
+            {
+                return StatusCode((int)ex.Code, new
+                {
+                    ErrorMessage = ex.Message,
+                    Erros = ex.Errors
+                });
+            }
             catch (ApiException ex)
             {
                 return StatusCode((int)ex.Code, new { ErrorMessage = ex.Message });
