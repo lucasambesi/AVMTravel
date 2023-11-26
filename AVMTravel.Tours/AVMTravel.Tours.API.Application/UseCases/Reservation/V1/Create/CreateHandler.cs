@@ -3,6 +3,7 @@ using AVMTravel.Tours.API.Domain.DTOs;
 using AVMTravel.Tours.API.Domain.Entities.Enums;
 using AVMTravel.Tours.API.Domain.Helpers.Exceptions;
 using AVMTravel.Tours.API.Domain.Interfaces.Services;
+using FluentValidation;
 using MediatR;
 
 namespace AVMTravel.Tours.API.Application.UseCases.Reservation.V1.Create
@@ -17,22 +18,34 @@ namespace AVMTravel.Tours.API.Application.UseCases.Reservation.V1.Create
 
         private readonly IMapper _mapper;
 
+        private readonly IValidator<CreateReservationRequest> _createReservationValidator;
+
         public CreateHandler(
             IReservationService reservationService,
             IClientService clientService,
             ITourService tourService,
-            IMapper mapper)
+            IMapper mapper,
+            IValidator<CreateReservationRequest> createReservationValidator)
         {
             _reservationService = reservationService;
             _clientService = clientService;
             _tourService = tourService;
             _mapper = mapper;
+            _createReservationValidator = createReservationValidator;
         }
 
         public async Task<CreateReservationResult> Handle(
             CreateReservationRequest request,
             CancellationToken cancellationToken)
         {
+            var validationResult = _createReservationValidator.Validate(request);
+
+            if (!validationResult.IsValid)
+            {
+                var errors = validationResult.Errors.Select(error => error.ErrorMessage).ToList();
+                throw new ValidationApiException(errors);
+            }
+
             var reservation = _mapper.Map<ReservationDto>(request);
 
             var client = await _clientService.GetByIdAsync(reservation.ClientId);

@@ -1,10 +1,15 @@
 ﻿using AutoMapper;
 using AVMTravel.Tours.API.Application.Mappings;
 using AVMTravel.Tours.API.Application.UseCases.Locations.V1.Create;
+using AVMTravel.Tours.API.Application.Validators.Location;
 using AVMTravel.Tours.API.Domain.DTOs;
 using AVMTravel.Tours.API.Domain.Interfaces.Services;
+using FluentValidation;
+using FluentValidation.Results;
 using Moq;
 using NUnit.Framework;
+using System;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Model;
 
 namespace AVMTravel.Tours.API.Application.UseCases.Location.V1.Create
 {
@@ -14,6 +19,8 @@ namespace AVMTravel.Tours.API.Application.UseCases.Location.V1.Create
         private CreateHandler _handler;
 
         private readonly Mock<ILocationService> _locationServiceMock = new Mock<ILocationService>();
+
+        private readonly Mock<IValidator<CreateLocationRequest>> _locationValidatorMock = new Mock<IValidator<CreateLocationRequest>>();
 
         [SetUp]
         public void SetUp()
@@ -25,6 +32,7 @@ namespace AVMTravel.Tours.API.Application.UseCases.Location.V1.Create
             var mapper = mapConfig.CreateMapper();
 
             _handler = new CreateHandler(_locationServiceMock.Object,
+                                        _locationValidatorMock.Object,
                                         mapper
                                         );
         }
@@ -38,6 +46,10 @@ namespace AVMTravel.Tours.API.Application.UseCases.Location.V1.Create
 
             _locationServiceMock.Setup(mock => mock.InsertAsync(It.IsAny<LocationDto>()))
                 .ReturnsAsync(1)
+                .Verifiable();
+
+            _locationValidatorMock.Setup(mock => mock.Validate(It.IsAny<CreateLocationRequest>()))
+                .Returns(new ValidationResult())
                 .Verifiable();
 
             // Act

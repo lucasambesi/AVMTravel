@@ -17,6 +17,7 @@ builder.Services.AddControllers();
 
 //Services
 builder.Services.ConfigureServices();
+builder.Services.ConfigureValidators();
 
 //MediaTR
 builder.Services.ConfigureMediatrServices();
