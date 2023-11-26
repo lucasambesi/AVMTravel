@@ -40,7 +40,6 @@ builder.Services.AddSwaggerGenConfig();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "API AVMTravel Tours", Version = "v1" });
-    // Set the comments path for the Swagger JSON and UI.
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     c.IncludeXmlComments(xmlPath);
@@ -48,7 +47,7 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-//app.RunMigrations();
+app.RunMigrations();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
