@@ -26,7 +26,7 @@ namespace AVMTravel.Tours.API.Application.UseCases.Locations.V1.Create
 
             var result = await _locationService.InsertAsync(location);
 
-            return new CreateLocationResult(result);
+            return new CreateLocationResult(result > 0, result);
         }
     }
 }

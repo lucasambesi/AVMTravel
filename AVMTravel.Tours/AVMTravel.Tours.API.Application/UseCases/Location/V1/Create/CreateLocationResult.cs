@@ -4,9 +4,12 @@
     {
         public bool Created { get; set; }
 
-        public CreateLocationResult(bool created)
+        public int Id { get; set; }
+
+        public CreateLocationResult(bool created, int id)
         {
             Created = created;
-        }        
+            Id = id;
+        }
     }
 }
