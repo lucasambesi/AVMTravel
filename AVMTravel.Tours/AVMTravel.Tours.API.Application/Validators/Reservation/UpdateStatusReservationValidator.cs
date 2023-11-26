@@ -1,6 +1,7 @@
 ﻿using AVMTravel.Tours.API.Application.UseCases.Reservation.V1.UpdateStatus;
-using AVMTravel.Tours.API.Domain.Helpers;
+using AVMTravel.Tours.API.Domain.Entities.Enums;
 using FluentValidation;
+using System;
 
 namespace AVMTravel.Tours.API.Application.Validators.Reservation
 {
@@ -9,6 +10,7 @@ namespace AVMTravel.Tours.API.Application.Validators.Reservation
         public UpdateStatusReservationValidator()
         {
             MandatoryValidations();
+            EnumValidations();
         }
 
         private void MandatoryValidations()
@@ -20,6 +22,18 @@ namespace AVMTravel.Tours.API.Application.Validators.Reservation
             RuleFor(request => request.Status)
                 .NotEmpty()
                 .WithMessage("The status cannot be empty");
+        }
+
+        private void EnumValidations()
+        {
+            RuleFor(x => x)
+               .Must(request => BeAValidEnumValue((int)request.Status))
+               .WithMessage("Status invalid format");
+        }     
+
+        private bool BeAValidEnumValue(int value)
+        {
+            return Enum.IsDefined(typeof(EReservationStatus), value);
         }
     }
 }
