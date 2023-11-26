@@ -1,9 +1,10 @@
 ﻿using AVMTravel.Tours.API.Domain.Entities;
+using AVMTravel.Tours.API.Domain.Entities.Common;
 using AVMTravel.Tours.API.Domain.Entities.Enums;
 
 namespace AVMTravel.Tours.API.Domain.DTOs
 {
-    public class ReservationDto
+    public class ReservationDto : AuditableBaseEntity
     {
         public int Id { get; set; }
 

@@ -1,6 +1,8 @@
-﻿namespace AVMTravel.Tours.API.Domain.DTOs
+﻿using AVMTravel.Tours.API.Domain.Entities.Common;
+
+namespace AVMTravel.Tours.API.Domain.DTOs
 {
-    public class ClientDto
+    public class ClientDto : AuditableBaseEntity
     {
         public int Id { get; set; }
 

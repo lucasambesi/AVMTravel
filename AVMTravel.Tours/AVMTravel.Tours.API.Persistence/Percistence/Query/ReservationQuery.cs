@@ -20,11 +20,17 @@ namespace AVMTravel.Tours.API.Persistence.Percistence.Query
             _mapper = mapper;
         }
 
-        public async Task<ReservationDto?> GetByIdAsync(int id)
+        public async Task<ReservationDto?> GetByIdAsync(int id, bool includeRelatedEntities = true)
         {
-            var reservation = await _dbContext.Reservations
-                .Include(r => r.Client)
-                .Include(r => r.Tour)
+            var query = _dbContext.Reservations.AsQueryable();
+
+            if (includeRelatedEntities)
+            {
+                query = query.Include(r => r.Client)
+                             .Include(r => r.Tour);
+            }
+
+            var reservation = await query
                 .Where(l => l.Id == id)
                 .FirstOrDefaultAsync();
 

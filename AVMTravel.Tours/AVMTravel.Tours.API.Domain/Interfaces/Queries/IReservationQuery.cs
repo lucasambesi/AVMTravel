@@ -4,6 +4,6 @@ namespace AVMTravel.Tours.API.Domain.Interfaces.Queries
 {
     public interface IReservationQuery
     {
-        Task<ReservationDto?> GetByIdAsync(int id);
+        Task<ReservationDto?> GetByIdAsync(int id, bool includeRelatedEntities = true);
     }
 }

@@ -28,19 +28,28 @@ namespace AVMTravel.Tours.API.Application.Services
         {
             var reservation = _mapper.Map<Reservation>(reservationDto);
 
-            FillEntity(reservation);
+            FillStatus(reservation, EReservationStatus.Created);
 
             return await _reservationRepository.InsertAsync(reservation);
         }
 
-        private static void FillEntity(Reservation reservation)
+        public async Task<bool> UpdateStatusAsync(ReservationDto reservationDto, EReservationStatus status)
         {
-            reservation.Status = EReservationStatus.Created;
+            var reservation = _mapper.Map<Reservation>(reservationDto);
+
+            FillStatus(reservation, status);
+
+            return await _reservationRepository.UpdateAsync(reservation);
         }
 
-        public async Task<ReservationDto?> GetByIdAsync(int id)
+        private static void FillStatus(Reservation reservation, EReservationStatus status)
         {
-            return await _reservationQuery.GetByIdAsync(id);
+            reservation.Status = status;
+        }
+
+        public async Task<ReservationDto?> GetByIdAsync(int id, bool includeRelatedEntities = true)
+        {
+            return await _reservationQuery.GetByIdAsync(id, includeRelatedEntities);
         }
     }
 }

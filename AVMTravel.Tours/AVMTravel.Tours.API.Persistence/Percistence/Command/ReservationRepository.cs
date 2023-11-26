@@ -32,5 +32,21 @@ namespace AVMTravel.Tours.API.Persistence.Percistence.Command
                 throw new PercistenceApiException(ex.Message, EErrorCodeType.InternalError);
             }
         }
+
+        public async Task<bool> UpdateAsync(Reservation reservation)
+        {
+            try
+            {
+                _dbContext.Reservations.Update(reservation);
+
+                var result = await _dbContext.SaveChangesAsync();
+
+                return result > 0;
+            }
+            catch (Exception ex)
+            {
+                throw new PercistenceApiException(ex.Message, EErrorCodeType.InternalError);
+            }
+        }
     }
 }
