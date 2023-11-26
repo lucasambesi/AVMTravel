@@ -6,7 +6,7 @@ namespace AVMTravel.Tours.API.Application.UseCases.Tours.V1.Update
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         public string? Description { get; set; }
 
