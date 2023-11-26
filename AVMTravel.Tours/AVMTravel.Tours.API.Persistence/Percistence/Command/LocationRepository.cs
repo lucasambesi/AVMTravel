@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using AVMTravel.Tours.API.Domain.Entities;
+using AVMTravel.Tours.API.Domain.Entities.Enums;
+using AVMTravel.Tours.API.Domain.Helpers.Exceptions;
 using AVMTravel.Tours.API.Domain.Interfaces.Commands;
 using AVMTravel.Tours.API.Persistence.Contexts;
 
@@ -9,23 +11,26 @@ namespace AVMTravel.Tours.API.Persistence.Percistence.Command
     {
         private readonly BaseContext _dbContext;
 
-        private readonly IMapper _mapper;
-
         public LocationRepository(
-            BaseContext dbContext,
-            IMapper mapper)
+            BaseContext dbContext)
         {
             _dbContext = dbContext;
-            _mapper = mapper;
         }
 
         public async Task<int> InsertAsync(Location location)
         {
-            _dbContext.Locations.Add(location);
+            try
+            {
+                _dbContext.Locations.Add(location);
 
-            var result = await _dbContext.SaveChangesAsync();
+                var result = await _dbContext.SaveChangesAsync();
 
-            return result > 0 ? location.Id : 0;
+                return result > 0 ? location.Id : 0;
+            }
+            catch (Exception ex)
+            {
+                throw new PercistenceApiException(ex.Message, EErrorCodeType.InternalError);
+            }
         }
     }
 }

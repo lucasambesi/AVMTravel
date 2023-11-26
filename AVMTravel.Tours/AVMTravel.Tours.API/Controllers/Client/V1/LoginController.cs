@@ -1,5 +1,6 @@
 ﻿using AVMTravel.Tours.API.Application.UseCases.Client.V1.Login;
 using AVMTravel.Tours.API.Application.UseCases.Client.V1.Register;
+using AVMTravel.Tours.API.Domain.Helpers.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -42,6 +43,10 @@ namespace AVMTravel.Tours.API.Controllers.Client.V1
                 var result = await _mediator.Send(client);
 
                 return Ok(result);
+            }
+            catch (ApiException ex)
+            {
+                return StatusCode((int)ex.Code, new { ErrorMessage = ex.Message });
             }
             catch (Exception ex)
             {

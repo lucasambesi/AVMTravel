@@ -14,10 +14,7 @@ namespace AVMTravel.Tours.API.Persistence.Percistence.Command
         [SetUp]
         public void SetUp()
         {
-            var mapConfig = new MapperMock();
-            var mapper = mapConfig.GetMapper();
-
-            _locationRepository = new LocationRepository(_contextDbMock.GetDbContext(), mapper);            
+            _locationRepository = new LocationRepository(_contextDbMock.GetDbContext());            
         }
 
         [Test(Description = "Should_be_valid_insert")]

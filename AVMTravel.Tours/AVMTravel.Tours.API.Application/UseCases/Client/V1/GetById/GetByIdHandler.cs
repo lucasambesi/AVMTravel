@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using AVMTravel.Tours.API.Domain.Entities.Enums;
+using AVMTravel.Tours.API.Domain.Helpers.Exceptions;
 using AVMTravel.Tours.API.Domain.Interfaces.Services;
 using MediatR;
 
@@ -24,7 +26,7 @@ namespace AVMTravel.Tours.API.Application.UseCases.Client.V1.GetById
 
             if (client == null)
             {
-                throw new Exception("Entity not found");
+                throw new ApplicationApiException("Entity not found", EErrorCodeType.NotFound);
             }
 
             var result = _mapper.Map<GetByIdClientResult>(client);

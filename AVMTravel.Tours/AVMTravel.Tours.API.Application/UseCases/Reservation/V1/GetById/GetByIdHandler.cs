@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using AVMTravel.Tours.API.Application.Services;
 using AVMTravel.Tours.API.Application.UseCases.Tours.V1.GetById;
+using AVMTravel.Tours.API.Domain.Entities.Enums;
+using AVMTravel.Tours.API.Domain.Entities;
+using AVMTravel.Tours.API.Domain.Helpers.Exceptions;
 using AVMTravel.Tours.API.Domain.Interfaces.Services;
 using MediatR;
 
@@ -24,7 +27,7 @@ namespace AVMTravel.Tours.API.Application.UseCases.Reservation.V1.GetById
 
             if (reservation == null)
             {
-                throw new Exception("Entity not found");
+                throw new ApplicationApiException("Entity not found", EErrorCodeType.NotFound);
             }
 
             var result = _mapper.Map<GetByIdReservationResult>(reservation);

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AVMTravel.Tours.API.ApiClients;
-using AVMTravel.Tours.API.Domain.DTOs;
+using AVMTravel.Tours.API.Domain.Entities.Enums;
+using AVMTravel.Tours.API.Domain.Helpers.Exceptions;
 using AVMTravel.Tours.API.Domain.Interfaces.Services;
 using MediatR;
 
@@ -32,7 +33,7 @@ namespace AVMTravel.Tours.API.Application.UseCases.Locations.V1.GetById
 
             if (location == null)
             {
-                throw new Exception("Entity not found");
+                throw new ApplicationApiException("Entity not found", EErrorCodeType.NotFound);
             }
 
             var result = _mapper.Map<GetByIdLocationResult>(location);
@@ -46,7 +47,7 @@ namespace AVMTravel.Tours.API.Application.UseCases.Locations.V1.GetById
                     result.Hotels = hotels.ToList();
                 }
             }
-            catch(Exception ex)
+            catch
             {
                 result.Hotels = null;
             }

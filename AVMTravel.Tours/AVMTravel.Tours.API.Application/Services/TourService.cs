@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using AVMTravel.Tours.API.Domain.DTOs;
 using AVMTravel.Tours.API.Domain.Entities;
+using AVMTravel.Tours.API.Domain.Entities.Enums;
+using AVMTravel.Tours.API.Domain.Helpers.Exceptions;
 using AVMTravel.Tours.API.Domain.Interfaces.Commands;
 using AVMTravel.Tours.API.Domain.Interfaces.Queries;
 using AVMTravel.Tours.API.Domain.Interfaces.Services;
@@ -36,7 +38,7 @@ namespace AVMTravel.Tours.API.Application.Services
 
             if(tourDto == null)
             {
-                return true;
+                throw new ApplicationApiException("Entity not found", EErrorCodeType.NotFound);
             }
 
             tourDto.Active = false;

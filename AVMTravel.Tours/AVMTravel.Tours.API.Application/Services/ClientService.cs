@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
 using AVMTravel.Tours.API.Domain.DTOs;
 using AVMTravel.Tours.API.Domain.Entities;
+using AVMTravel.Tours.API.Domain.Entities.Enums;
 using AVMTravel.Tours.API.Domain.Helpers.Encrypt;
+using AVMTravel.Tours.API.Domain.Helpers.Exceptions;
 using AVMTravel.Tours.API.Domain.Interfaces.Commands;
 using AVMTravel.Tours.API.Domain.Interfaces.Queries;
 using AVMTravel.Tours.API.Domain.Interfaces.Services;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -38,7 +41,7 @@ namespace AVMTravel.Tours.API.Application.Services
             if (string.IsNullOrEmpty(clientDto.Password) ||
                 string.IsNullOrEmpty(clientDto.Email))
             {
-                throw new Exception("Email or password not found");
+                throw new ApplicationApiException("Email or password empty", EErrorCodeType.Business );
             }
 
             clientDto.Password = EncryptPassword(clientDto.Password);
@@ -65,6 +68,11 @@ namespace AVMTravel.Tours.API.Application.Services
         public async Task<ClientDto?> GetByIdAsync(int id)
         {
             return await _clientQuery.GetByIdAsync(id);
+        }
+
+        public async Task<ClientDto?> GetByEmailAsync(string email)
+        {
+            return await _clientQuery.GetByEmailAsync(email);
         }
 
         private string EncryptPassword(string password)

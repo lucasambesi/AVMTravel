@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using AVMTravel.Tours.API.Domain.DTOs;
+using AVMTravel.Tours.API.Domain.Entities.Enums;
+using AVMTravel.Tours.API.Domain.Helpers.Exceptions;
 using AVMTravel.Tours.API.Domain.Interfaces.Services;
 using MediatR;
 
@@ -37,14 +39,14 @@ namespace AVMTravel.Tours.API.Application.UseCases.Reservation.V1.Create
 
             if (client == null)
             {
-                throw new Exception("Client not found");
+                throw new ApplicationApiException("Client not found", EErrorCodeType.NotFound);
             }
 
             var tour = await _tourService.GetByIdAsync(reservation.TourId);
 
             if (tour == null)
             {
-                throw new Exception("Tour not found");
+                throw new ApplicationApiException("Tour not found", EErrorCodeType.NotFound);
             }
 
             var result = await _reservationService.InsertAsync(reservation);

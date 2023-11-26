@@ -30,6 +30,7 @@ namespace AVMTravel.Tours.API.Controllers.Client.V1
         /// <returns></returns>
         /// <response code="200">Register</response>
         /// <response code="404">Not Found</response>
+        /// /// <response code="422">Business error</response>
         [HttpPost]
         [ProducesResponseType(typeof(RegisterResult), (int)HttpStatusCode.Created)]
         public async Task<IActionResult> RegisterClientAsync(

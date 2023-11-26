@@ -23,9 +23,18 @@ namespace AVMTravel.Tours.API.Persistence.Percistence.Query
 
         public async Task<ClientDto?> GetByIdAsync(int id)
         {
-            var location = await _dbContext.Clients.FirstOrDefaultAsync(l => l.Id == id);
+            var client = await _dbContext.Clients.FirstOrDefaultAsync(l => l.Id == id);
 
-            var result = _mapper.Map<ClientDto>(location);
+            var result = _mapper.Map<ClientDto>(client);
+
+            return result;
+        }
+
+        public async Task<ClientDto?> GetByEmailAsync(string email)
+        {
+            var client = await _dbContext.Clients.FirstOrDefaultAsync(l => l.Email == email);
+
+            var result = _mapper.Map<ClientDto>(client);
 
             return result;
         }

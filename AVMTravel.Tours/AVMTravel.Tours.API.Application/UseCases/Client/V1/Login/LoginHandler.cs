@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using AVMTravel.Tours.API.Domain.DTOs;
+using AVMTravel.Tours.API.Domain.Entities.Enums;
+using AVMTravel.Tours.API.Domain.Helpers.Exceptions;
 using AVMTravel.Tours.API.Domain.Interfaces.Services;
 using MediatR;
 
@@ -29,7 +31,7 @@ namespace AVMTravel.Tours.API.Application.UseCases.Client.V1.Login
 
             if (clientDto == null)
             {
-                throw new Exception("Email or password not found");
+                throw new ApplicationApiException("Email or password not found", EErrorCodeType.Business);                
             }
 
             var token = _clientService.GenerateToken(clientDto);

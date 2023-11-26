@@ -7,6 +7,8 @@ namespace AVMTravel.Tours.API.Domain.Interfaces.Queries
     {
         Task<ClientDto?> GetByIdAsync(int id);
 
+        Task<ClientDto?> GetByEmailAsync(string email);
+
         Task<ClientDto?> GetUserByCredentialsAsync(Client client);
     }
 }

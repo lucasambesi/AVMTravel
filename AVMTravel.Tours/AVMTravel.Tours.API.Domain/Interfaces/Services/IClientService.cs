@@ -13,5 +13,7 @@ namespace AVMTravel.Tours.API.Domain.Interfaces.Services
         Task<bool> InsertAsync(ClientDto clientDto);
 
         Task<ClientDto?> GetByIdAsync(int id);
+
+        Task<ClientDto?> GetByEmailAsync(string email);
     }
 }

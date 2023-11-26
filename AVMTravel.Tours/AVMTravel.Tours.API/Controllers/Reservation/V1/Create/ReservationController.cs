@@ -1,4 +1,5 @@
 ﻿using AVMTravel.Tours.API.Application.UseCases.Reservation.V1.Create;
+using AVMTravel.Tours.API.Domain.Helpers.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -16,6 +17,7 @@ namespace AVMTravel.Tours.API.Controllers.Reservation.V1
         /// <returns></returns>
         /// <response code="200">Created</response>
         /// <response code="404">Not Found</response>
+        /// <response code="422">Business error</response>
         [HttpPost]
         [ProducesResponseType(typeof(CreateReservationResult), (int)HttpStatusCode.Created)]
         public async Task<IActionResult> CreateReservationAsync(
@@ -27,6 +29,10 @@ namespace AVMTravel.Tours.API.Controllers.Reservation.V1
                 var result = await _mediator.Send(reservation);
 
                 return Ok(result);
+            }
+            catch (ApiException ex)
+            {
+                return StatusCode((int)ex.Code, new { ErrorMessage = ex.Message });
             }
             catch (Exception ex)
             {
