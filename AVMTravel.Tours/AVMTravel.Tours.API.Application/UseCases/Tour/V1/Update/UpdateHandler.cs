@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AVMTravel.Tours.API.Application.UseCases.Tours.V1.Create;
 using AVMTravel.Tours.API.Application.Validators.Tour;
+using AVMTravel.Tours.API.Domain.Constants;
 using AVMTravel.Tours.API.Domain.DTOs;
 using AVMTravel.Tours.API.Domain.Entities.Enums;
 using AVMTravel.Tours.API.Domain.Helpers.Exceptions;
@@ -44,7 +45,7 @@ namespace AVMTravel.Tours.API.Application.UseCases.Tours.V1.Update
 
             if (tour == null)
             {
-                throw new ApplicationApiException("Entity not found", EErrorCodeType.NotFound);
+                throw new ApplicationApiException(ExceptionConstants.ENTITY_NOT_FOUND, EErrorCodeType.NotFound);
             }
 
             var newTour = _mapper.Map<TourDto>(request);

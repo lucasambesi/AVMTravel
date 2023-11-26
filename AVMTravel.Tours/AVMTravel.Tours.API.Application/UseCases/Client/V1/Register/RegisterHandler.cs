@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AVMTravel.Tours.API.Application.UseCases.Client.V1.Login;
 using AVMTravel.Tours.API.Application.Validators.Client;
+using AVMTravel.Tours.API.Domain.Constants;
 using AVMTravel.Tours.API.Domain.DTOs;
 using AVMTravel.Tours.API.Domain.Entities.Enums;
 using AVMTravel.Tours.API.Domain.Helpers.Exceptions;
@@ -46,7 +47,7 @@ namespace AVMTravel.Tours.API.Application.UseCases.Client.V1.Register
 
             if (exists != null)
             {
-                throw new ApplicationApiException("The email has already been registered", EErrorCodeType.Business);
+                throw new ApplicationApiException(ExceptionConstants.EMAIL_ALREADY_REGISTERED, EErrorCodeType.Business);
             }
 
             var result = await _clientService.RegisterAsync(client);

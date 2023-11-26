@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AVMTravel.Tours.API.Domain.Constants;
 using AVMTravel.Tours.API.Domain.DTOs;
 using AVMTravel.Tours.API.Domain.Entities;
 using AVMTravel.Tours.API.Domain.Entities.Enums;
@@ -41,7 +42,7 @@ namespace AVMTravel.Tours.API.Application.Services
             if (string.IsNullOrEmpty(clientDto.Password) ||
                 string.IsNullOrEmpty(clientDto.Email))
             {
-                throw new ApplicationApiException("Email or password empty", EErrorCodeType.Business );
+                throw new ApplicationApiException(ExceptionConstants.EMAIL_OR_PASSWORD_EMPTY, EErrorCodeType.Business );
             }
 
             clientDto.Password = EncryptPassword(clientDto.Password);

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AVMTravel.Tours.API.Application.UseCases.Locations.V1.Create;
+using AVMTravel.Tours.API.Domain.Constants;
 using AVMTravel.Tours.API.Domain.DTOs;
 using AVMTravel.Tours.API.Domain.Entities.Enums;
 using AVMTravel.Tours.API.Domain.Helpers.Exceptions;
@@ -45,7 +46,7 @@ namespace AVMTravel.Tours.API.Application.UseCases.Client.V1.Login
 
             if (clientDto == null)
             {
-                throw new ApplicationApiException("Email or password not found", EErrorCodeType.Business);                
+                throw new ApplicationApiException(ExceptionConstants.EMAIL_OR_PASSWORD_NOT_FOUND, EErrorCodeType.Business);                
             }
 
             var token = _clientService.GenerateToken(clientDto);

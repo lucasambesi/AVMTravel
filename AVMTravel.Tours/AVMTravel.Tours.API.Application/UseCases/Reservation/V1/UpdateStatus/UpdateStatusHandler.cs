@@ -1,5 +1,6 @@
 ﻿using AVMTravel.Tours.API.Application.UseCases.Client.V1.Login;
 using AVMTravel.Tours.API.Application.Validators.Client;
+using AVMTravel.Tours.API.Domain.Constants;
 using AVMTravel.Tours.API.Domain.Entities.Enums;
 using AVMTravel.Tours.API.Domain.Helpers.Exceptions;
 using AVMTravel.Tours.API.Domain.Interfaces.Services;
@@ -38,7 +39,7 @@ namespace AVMTravel.Tours.API.Application.UseCases.Reservation.V1.UpdateStatus
 
             if (reservation == null)
             {
-                throw new ApplicationApiException("Entity not found", EErrorCodeType.NotFound);
+                throw new ApplicationApiException(ExceptionConstants.ENTITY_NOT_FOUND, EErrorCodeType.NotFound);
             }
 
             var result = await _reservationService.UpdateStatusAsync(reservation, request.Status);
