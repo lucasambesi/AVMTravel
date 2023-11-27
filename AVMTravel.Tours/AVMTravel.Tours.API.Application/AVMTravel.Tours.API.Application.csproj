@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AVMTravel.Tours.API.ApiClients\AVMTravel.Tours.API.ApiClients.csproj" />
+    <ProjectReference Include="..\AVMTravel.Tours.API.Persistence\AVMTravel.Tours.API.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>

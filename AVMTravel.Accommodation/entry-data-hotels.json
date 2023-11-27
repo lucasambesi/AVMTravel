@@ -1,0 +1,135 @@
+[
+    {
+        "LocationId": 1,
+        "Name": "Hotel Salta Plaza",
+        "Description": "Un acogedor hotel en el corazón de Salta",
+        "Address": "Avenida Principal, Salta",
+        "Rating": 4.5
+    },
+    {
+        "LocationId": 2,
+        "Name": "Gran Hotel Mendoza",
+        "Description": "Un lujoso hotel en el centro de Mendoza",
+        "Address": "Calle Principal, Mendoza",
+        "Rating": 4.8
+    },
+    {
+        "LocationId": 3,
+        "Name": "Hotel Buenos Aires Suites",
+        "Description": "Un moderno hotel en el corazón de Buenos Aires",
+        "Address": "Avenida Principal, Buenos Aires",
+        "Rating": 4.2
+    },
+    {
+        "LocationId": 4,
+        "Name": "Comfort Inn Santa Cruz",
+        "Description": "Un cómodo hotel en Santa Cruz",
+        "Address": "Calle Principal, Santa Cruz",
+        "Rating": 4.0
+    },
+    {
+        "LocationId": 5,
+        "Name": "Misiones Paradise Hotel",
+        "Description": "Un tranquilo hotel en la región de Misiones",
+        "Address": "Avenida Principal, Misiones",
+        "Rating": 4.6
+    },
+    {
+        "LocationId": 6,
+        "Name": "Tierra del Fuego Lodge",
+        "Description": "Un pintoresco lodge en Tierra del Fuego",
+        "Address": "Calle Principal, Tierra del Fuego",
+        "Rating": 4.3
+    },
+    {
+        "LocationId": 7,
+        "Name": "Río Negro Grand Hotel",
+        "Description": "Un elegante hotel en la provincia de Río Negro",
+        "Address": "Avenida Principal, Río Negro",
+        "Rating": 4.7
+    },
+    {
+        "LocationId": 8,
+        "Name": "San Luis Boutique Hotel",
+        "Description": "Un encantador hotel boutique en San Luis",
+        "Address": "Calle Principal, San Luis",
+        "Rating": 4.1
+    },
+    {
+        "LocationId": 1,
+        "Name": "Hotel Salta Central",
+        "Description": "Otro hotel en el centro de Salta",
+        "Address": "Otra Avenida, Salta",
+        "Rating": 4.4
+    },
+    {
+        "LocationId": 2,
+        "Name": "Mendoza City Hotel",
+        "Description": "Otro hotel en el corazón de Mendoza",
+        "Address": "Otra Calle, Mendoza",
+        "Rating": 4.9
+    },
+    {
+        "LocationId": 3,
+        "Name": "Buenos Aires Grand Tower",
+        "Description": "Otro hotel de lujo en Buenos Aires",
+        "Address": "Otra Avenida, Buenos Aires",
+        "Rating": 4.0
+    },
+    {
+        "LocationId": 4,
+        "Name": "Santa Cruz Comfort Suites",
+        "Description": "Otro hotel cómodo en Santa Cruz",
+        "Address": "Otra Calle, Santa Cruz",
+        "Rating": 3.8
+    },
+    {
+        "LocationId": 5,
+        "Name": "Misiones Riverside Hotel",
+        "Description": "Otro hotel junto al río en Misiones",
+        "Address": "Otra Avenida, Misiones",
+        "Rating": 4.7
+    },
+    {
+        "LocationId": 6,
+        "Name": "Tierra del Fuego Eco Lodge",
+        "Description": "Otro lodge ecológico en Tierra del Fuego",
+        "Address": "Otra Calle, Tierra del Fuego",
+        "Rating": 4.2
+    },
+    {
+        "LocationId": 7,
+        "Name": "Río Negro City Center Hotel",
+        "Description": "Otro hotel en el centro de Río Negro",
+        "Address": "Otra Avenida, Río Negro",
+        "Rating": 4.6
+    },
+    {
+        "LocationId": 8,
+        "Name": "San Luis Heritage Inn",
+        "Description": "Otro hotel con encanto en San Luis",
+        "Address": "Otra Calle, San Luis",
+        "Rating": 4.3
+    },
+    {
+        "LocationId": 1,
+        "Name": "Hotel Salta Sunset",
+        "Description": "Un tercer hotel con vista al atardecer en Salta",
+        "Address": "Tercera Avenida, Salta",
+        "Rating": 4.6
+    },
+    {
+        "LocationId": 2,
+        "Name": "Mendoza Vineyard Hotel",
+        "Description": "Un tercer hotel entre viñedos en Mendoza",
+        "Address": "Tercera Calle, Mendoza",
+        "Rating": 4.5
+    },
+    {
+        "LocationId": 3,
+        "Name": "Buenos Aires Art Hotel",
+        "Description": "Un tercer hotel de arte en Buenos Aires",
+        "Address": "Tercera Avenida, Buenos Aires",
+        "Rating": 4.1
+    }
+]
