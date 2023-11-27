@@ -3,6 +3,7 @@ using AVMTravel.Tours.API.ApiClients.Dtos.Accommodation;
 using AVMTravel.Tours.API.Application.Services;
 using AVMTravel.Tours.API.Application.UseCases.Locations.V1.Create;
 using AVMTravel.Tours.API.Application.UseCases.Locations.V1.GetById;
+using AVMTravel.Tours.API.Application.Validators.Location;
 using AVMTravel.Tours.API.Bootstrap.Providers.Cofigurations;
 using AVMTravel.Tours.API.Controllers.Location.V1;
 using AVMTravel.Tours.API.Domain.Interfaces.Commands;
@@ -11,6 +12,7 @@ using AVMTravel.Tours.API.Domain.Interfaces.Services;
 using AVMTravel.Tours.API.Persistence.Contexts;
 using AVMTravel.Tours.API.Persistence.Percistence.Command;
 using AVMTravel.Tours.API.Persistence.Percistence.Query;
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -45,6 +47,7 @@ namespace AVMTravel.Tours.API.NIntegrationTests.Common
 
             //Internal services
             services
+                .AddTransient<IValidator<CreateLocationRequest>, CreateLocationValidator>()
                 .AddScoped<ILocationService, LocationService>()
                 .AddScoped<ILocationRepository, LocationRepository>()
                 .AddScoped<ILocationQuery, LocationQuery>();       
